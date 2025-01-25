@@ -11,6 +11,7 @@ interface IGetAllGallery {
 
 export class GalleryService {
   // Create a new Gallery
+  
   async CreateGallery({ imageUrl }: ICreateGallery) {
     if (!imageUrl) {
       return {
