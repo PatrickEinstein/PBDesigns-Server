@@ -55,7 +55,7 @@ export class GalleryService {
             if (!deletedGallery) {
                 return {
                     status: false,
-                    message: "This Forum does not exist.",
+                    message: "This Image does not exist does not exist.",
                 };
             }
             return {
