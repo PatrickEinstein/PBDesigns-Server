@@ -23,7 +23,8 @@ export class GalleryController {
   };
 
   DeleteGallery: RequestHandler = async (req, res, next) => {
-    const { id: _id } = req.body;
+    const { _id } = req.params;
+    // console.log(_id)
     const response = await this.blogService.DeleteGallery(_id);
     return res.json(response);
   };
