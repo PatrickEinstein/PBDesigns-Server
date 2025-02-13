@@ -13,7 +13,7 @@ import helmet from "helmet";
 import { KeepAlive } from "./config/KeepAwake.js";
 import BlogsRouter from "./Routes/BlogsRoute.js";
 import GalleryRouter from "./Routes/GalleryRoutes.js";
-import { RabbitMQService } from "./Services/RabbitMQService..js";
+import { RabbitMQService } from "./Services/RabbitMQService.js";
 const app = express();
 const server = http.createServer(app);
 const __dirname = path.dirname(new URL(import.meta.url).pathname).slice(1);
