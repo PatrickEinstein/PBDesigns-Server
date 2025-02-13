@@ -8,7 +8,7 @@ const ConnectDatabse = (
   app: any,
   PORT: number,
   uri: string,
-  conn: Connection | null
+  // conn: Connection | null
 ) => {
   mongoose
     .connect(uri)
@@ -23,9 +23,9 @@ const ConnectDatabse = (
       console.log("DB connected");
     })
     .catch((err) => console.log(err));
-  process.on("beforeExit", (data) => {
-    console.log("closing connection==>", data);
-    conn?.close();
-  });
+  // process.on("beforeExit", (data) => {
+  //   console.log("closing connection==>", data);
+  //   conn?.close();
+  // });
 };
 export default ConnectDatabse;
