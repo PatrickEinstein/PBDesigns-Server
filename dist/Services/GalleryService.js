@@ -31,6 +31,9 @@ export class GalleryService {
             const page = parseInt(param, 10) || 1;
             const pageSize = parseInt(itemSize, 10) || 10;
             const skip = (page - 1) * pageSize;
+            // Count total number of gallery items
+            const totalCount = await GalleryModel.countDocuments();
+            const totalPages = Math.ceil(totalCount / pageSize);
             const allGallery = await GalleryModel.find({})
                 .skip(skip)
                 .limit(pageSize)
@@ -38,6 +41,9 @@ export class GalleryService {
             return {
                 status: true,
                 data: allGallery,
+                totalPages, // 👈 Added total pages
+                currentPage: page,
+                totalItems: totalCount, // 👈 Total gallery items
             };
         }
         catch (error) {
@@ -45,6 +51,9 @@ export class GalleryService {
                 status: false,
                 message: error.message,
                 data: [],
+                totalPages: 0,
+                currentPage: 0,
+                totalItems: 0,
             };
         }
     }

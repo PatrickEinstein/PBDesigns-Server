@@ -12,10 +12,10 @@ import { Server } from "socket.io";
 import upload from "./config/Multer.js";
 import helmet from "helmet";
 
-
 import { KeepAlive } from "./config/KeepAwake.js";
 import BlogsRouter from "./Routes/BlogsRoute.js";
 import GalleryRouter from "./Routes/GalleryRoutes.js";
+import { RabbitMQService } from "./Services/RabbitMQService..js";
 
 const app = express();
 const server = http.createServer(app);
@@ -45,15 +45,24 @@ app.get("/", (req, res) => {
   res.json("WELCOME");
 });
 
+const rabbitConn = new RabbitMQService();
+const { conn, channel } = await rabbitConn.Connect();
+
+// Production of message
+channel?.sendToQueue("Hello5", Buffer.from("Heloooooo"));
+
+// Consumption of message
+channel?.assertQueue("Hello5", { durable: true });
+channel?.consume("Hello5", (message) => {
+  console.log(message?.content.toString());
+}, {noAck: true});
 
 
-
-app.use("/", BlogsRouter)
-app.use("/", GalleryRouter)
-
+app.use("/", BlogsRouter);
+app.use("/", GalleryRouter);
 
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
 const uri: string = process.env.DB_URI ? process.env.DB_URI : "";
 
-ConnectDatabse(server, PORT, uri);
-KeepAlive()
+ConnectDatabse(server, PORT, uri, conn);
+KeepAlive();

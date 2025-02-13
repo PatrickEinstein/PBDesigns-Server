@@ -1,8 +1,6 @@
 import { RequestHandler } from "express";
 import { GalleryService } from "../Services/GalleryService.js";
 
-
-
 export class GalleryController {
   blogService = new GalleryService();
   constructor() {}
@@ -14,7 +12,11 @@ export class GalleryController {
     return res.json(response);
   };
   getAllGallery: RequestHandler = async (req, res, next) => {
-    const { pageSize: itemSize, page: param } = req.body;
+    const { pageSize: itemSize, page: param } = req.params;
+    console.log({
+      itemSize,
+      param,
+    });
     const response = await this.blogService.getAllGallerys({
       itemSize,
       param,
