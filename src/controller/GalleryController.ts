@@ -13,10 +13,7 @@ export class GalleryController {
   };
   getAllGallery: RequestHandler = async (req, res, next) => {
     const { pageSize: itemSize, page: param } = req.params;
-    console.log({
-      itemSize,
-      param,
-    });
+
     const response = await this.blogService.getAllGallerys({
       itemSize,
       param,
