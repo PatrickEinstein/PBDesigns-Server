@@ -1,21 +1,20 @@
 import mongoose, { Document, Schema, Model } from "mongoose";
 
 interface IBlog extends Document {
-  title: string;
-  pictures: string[];
-  description: string;
+  contentHtml: string;
+  contentDelta: string;
+  excerpt: string;
 }
 
-const ForumSchema: Schema<IBlog> = new mongoose.Schema(
+const ForumSchema2: Schema<IBlog> = new mongoose.Schema(
   {
-    title: {
+    contentHtml: {
       type: String,
-      required: true,
     },
-    pictures: {
-      type: [String],
+    contentDelta: {
+      type: String,
     },
-    description: {
+    excerpt: {
       type: String,
     },
   },
@@ -24,9 +23,12 @@ const ForumSchema: Schema<IBlog> = new mongoose.Schema(
   }
 );
 
+
+
+
 const BlogModel: Model<IBlog> = mongoose.model<IBlog>(
-  "BlogModel",
-  ForumSchema
+  "BlogModel2",
+  ForumSchema2
 );
 
 export default BlogModel;

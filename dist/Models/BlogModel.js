@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
-const ForumSchema = new mongoose.Schema({
-    title: {
+const ForumSchema2 = new mongoose.Schema({
+    contentHtml: {
         type: String,
-        required: true,
     },
-    pictures: {
-        type: [String],
+    contentDelta: {
+        type: String,
     },
-    description: {
+    excerpt: {
         type: String,
     },
 }, {
     timestamps: true,
 });
-const BlogModel = mongoose.model("BlogModel", ForumSchema);
+const BlogModel = mongoose.model("BlogModel2", ForumSchema2);
 export default BlogModel;
