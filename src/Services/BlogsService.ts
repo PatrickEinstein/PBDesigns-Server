@@ -1,4 +1,3 @@
-import BlogModel from "../Models/BlogModel.js";
 import BlogModel2 from "../Models/BlogModel2.js";
 
 interface ICreateBlog {
