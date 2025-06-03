@@ -4,15 +4,17 @@ import { BlogsService } from "../Services/BlogsService.js";
 export class BlogsController {
   blogService = new BlogsService();
   constructor() {}
-  CreateBlog: RequestHandler = async (req, res, next) => {
-    const { title, description, imageUrls } = req.body;
-    const response = await this.blogService.CreateBlog({
-      title,
-      description,
-      imageUrls,
-    });
+  CreateBlog2: RequestHandler = async (req, res, next) => {
+    console.log(req.body);
+    const { contentHtml, contentDelta, excerpt } = req.body;
+    const response = await this.blogService.CreateBlog2(
+      contentHtml,
+      contentDelta,
+      excerpt
+    );
     return res.json(response);
   };
+
   getAllBlogs: RequestHandler = async (req, res, next) => {
     const { pageSize: itemSize, page: param } = req.body;
     const response = await this.blogService.getAllBlogs({
@@ -22,18 +24,18 @@ export class BlogsController {
     return res.json(response);
   };
   UpdateBlog: RequestHandler = async (req, res, next) => {
-    const { id: _id } = req.params;
-    const { title, description, picture: imageUrls } = req.body;
-    const response = await this.blogService.UpdateBlog({
+    
+    const { _id, contentHtml, contentDelta, excerpt } = req.body;
+    const response = await this.blogService.UpdateBlog(
       _id,
-      description,
-      imageUrls,
-      title,
-    });
+      contentHtml,
+      contentDelta,
+      excerpt
+    );
     return res.json(response);
   };
   DeleteBlog: RequestHandler = async (req, res, next) => {
-    const { id: _id } = req.body;
+    const { _id } = req.params;
     const response = await this.blogService.DeleteBlog(_id);
     return res.json(response);
   };

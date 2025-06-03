@@ -1,15 +1,13 @@
 import express from "express";
 import { BlogsController } from "../controller/BlogsController.js";
 
-
 let BlogsRouter = express.Router();
 const blogsController = new BlogsController();
- 
 
 /**
  * @openapi
  * paths:
- *   /api/blog:
+ *   /api/blogV2:
  *     post:
  *       tags:
  *         - Blogs
@@ -23,9 +21,7 @@ const blogsController = new BlogsController();
  *               properties:
  *                 title:
  *                   type: string
- *                 description:
- *                   type: string
- *                 image:
+ *                 content:
  *                   type: string
  *       responses:
  *         200:
@@ -34,7 +30,7 @@ const blogsController = new BlogsController();
  *           description: Not Found
  */
 
-BlogsRouter.post("/api/blog",blogsController.CreateBlog );
+BlogsRouter.post("/api/blogV2", blogsController.CreateBlog2);
 
 /**
  * @openapi
@@ -67,11 +63,7 @@ BlogsRouter.post("/api/blog",blogsController.CreateBlog );
  *         description: Bad request
  */
 
-BlogsRouter.get(
-  "/api/blog/:page/:pageSize",
-  blogsController.getAllBlogs
-);
-
+BlogsRouter.get("/api/blog/:page/:pageSize", blogsController.getAllBlogs);
 
 /**
  * @openapi
@@ -122,8 +114,7 @@ BlogsRouter.get(
  *         description: Internal server error
  */
 
-BlogsRouter.patch("/api/blog/update/:_id", blogsController.UpdateBlog);
-
+BlogsRouter.patch("/api/blog/update", blogsController.UpdateBlog);
 
 /**
  * @openapi
