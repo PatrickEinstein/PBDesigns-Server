@@ -26,6 +26,8 @@ const ForumSchema2: Schema<IBlog> = new mongoose.Schema(
 
 
 
+
+
 const BlogModel: Model<IBlog> = mongoose.model<IBlog>(
   "BlogModel2",
   ForumSchema2
