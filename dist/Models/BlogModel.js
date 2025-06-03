@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const ForumSchema2 = new mongoose.Schema({
+const ForumSchema = new mongoose.Schema({
     contentHtml: {
         type: String,
     },
@@ -12,5 +12,5 @@ const ForumSchema2 = new mongoose.Schema({
 }, {
     timestamps: true,
 });
-const BlogModel = mongoose.model("BlogModel2", ForumSchema2);
+const BlogModel = mongoose.model("BlogModel", ForumSchema);
 export default BlogModel;

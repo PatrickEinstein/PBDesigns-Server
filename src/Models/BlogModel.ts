@@ -6,7 +6,7 @@ interface IBlog extends Document {
   excerpt: string;
 }
 
-const ForumSchema2: Schema<IBlog> = new mongoose.Schema(
+const ForumSchema: Schema<IBlog> = new mongoose.Schema(
   {
     contentHtml: {
       type: String,
@@ -29,8 +29,8 @@ const ForumSchema2: Schema<IBlog> = new mongoose.Schema(
 
 
 const BlogModel: Model<IBlog> = mongoose.model<IBlog>(
-  "BlogModel2",
-  ForumSchema2
+  "BlogModel",
+  ForumSchema
 );
 
 export default BlogModel;
