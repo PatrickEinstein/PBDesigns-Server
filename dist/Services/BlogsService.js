@@ -1,4 +1,4 @@
-import BlogModel2 from "../Models/BlogModel";
+import BlogModel from "../Models/BlogModel";
 export class BlogsService {
     // Create a new blog
     async CreateBlog2(contentHtml, contentDelta, excerpt) {
@@ -9,7 +9,7 @@ export class BlogsService {
             };
         }
         try {
-            const newBlog2 = new BlogModel2({
+            const newBlog2 = new BlogModel({
                 contentHtml,
                 contentDelta,
                 excerpt,
@@ -34,7 +34,7 @@ export class BlogsService {
             const page = parseInt(param, 10) || 1;
             const pageSize = parseInt(itemSize, 10) || 10;
             const skip = (page - 1) * pageSize;
-            const allForums = await BlogModel2.find({})
+            const allForums = await BlogModel.find({})
                 .skip(skip)
                 .limit(pageSize)
                 .sort({ createdAt: -1 });
@@ -54,7 +54,7 @@ export class BlogsService {
     // Update an existing blog
     async UpdateBlog(_id, contentHtml, contentDelta, excerpt) {
         try {
-            const foundBlog = await BlogModel2.findById({ _id });
+            const foundBlog = await BlogModel.findById({ _id });
             if (!foundBlog) {
                 return {
                     status: false,
@@ -81,7 +81,7 @@ export class BlogsService {
     // Delete a forum
     async DeleteBlog(_id) {
         try {
-            const deletedForum = await BlogModel2.findByIdAndDelete(_id);
+            const deletedForum = await BlogModel.findByIdAndDelete(_id);
             if (!deletedForum) {
                 return {
                     status: false,
