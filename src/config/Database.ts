@@ -7,11 +7,14 @@ dotenv.config();
 const ConnectDatabse = (
   app: any,
   PORT: number,
-  uri: string,
+  uri: string
   // conn: Connection | null
 ) => {
   mongoose
     .connect(uri)
+    .then(async () => {
+      console.log("DB connected");
+    })
     .then(
       app.listen(PORT, async (req: Request, res: Response) => {
         console.log(
@@ -19,9 +22,6 @@ const ConnectDatabse = (
         );
       })
     )
-    .then(async () => {
-      console.log("DB connected");
-    })
     .catch((err) => console.log(err));
   // process.on("beforeExit", (data) => {
   //   console.log("closing connection==>", data);
