@@ -1,5 +1,5 @@
 
-import BlogModel from "../Models/BlogModel";
+import BlogModel from "../Models/BlogModel.js";
 
 interface ICreateBlog {
   title: string;

@@ -1,4 +1,4 @@
-import BlogModel from "../Models/BlogModel";
+import BlogModel from "../Models/BlogModel.js";
 export class BlogsService {
     // Create a new blog
     async CreateBlog2(contentHtml, contentDelta, excerpt) {
