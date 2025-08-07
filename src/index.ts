@@ -17,16 +17,16 @@ import { KeepAlive } from "./config/KeepAwake.js";
 import BlogsRouter from "./Routes/BlogsRoute.js";
 import GalleryRouter from "./Routes/GalleryRoutes.js";
 
-const options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
-};
+// const options = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem'),
+// };
 
 
 
 const app = express();
-// const server = http.createServer(app);
-const server = https.createServer(options, app)
+const server = http.createServer(app);
+// const server = https.createServer(options, app)
 const __dirname = path.dirname(new URL(import.meta.url).pathname).slice(1);
 
 console.log(__dirname);
