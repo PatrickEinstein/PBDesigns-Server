@@ -56,7 +56,6 @@ app.get("/", (req, res) => {
 });
 
 
-
 app.use("/", BlogsRouter);
 app.use("/", GalleryRouter);
 
