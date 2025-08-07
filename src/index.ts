@@ -55,7 +55,6 @@ app.get("/", (req, res) => {
   res.json("WELCOME");
 });
 
-
 app.use("/", BlogsRouter);
 app.use("/", GalleryRouter);
 
