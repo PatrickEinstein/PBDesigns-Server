@@ -1,23 +1,22 @@
 import express from "express";
-import https from 'https';
+import http from "http";
 import cors from "cors";
 import path from "path";
 import ConnectDatabse from "./config/Database.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerconfig from "./config/SwaggerUiDocs.js";
 import dotenv from "dotenv";
-import fs from 'fs';
 dotenv.config();
 import upload from "./config/Multer.js";
 import BlogsRouter from "./Routes/BlogsRoute.js";
 import GalleryRouter from "./Routes/GalleryRoutes.js";
-const options = {
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem'),
-};
+// const options = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem'),
+// };
 const app = express();
-// const server = http.createServer(app);
-const server = https.createServer(options, app);
+const server = http.createServer(app);
+// const server = https.createServer(options, app)
 const __dirname = path.dirname(new URL(import.meta.url).pathname).slice(1);
 console.log(__dirname);
 app.use(cors({
