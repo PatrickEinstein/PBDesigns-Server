@@ -3,15 +3,16 @@ import path from "path";
 import dotenv from 'dotenv';
 dotenv.config();
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-// const directoryPathLinux = `${path.join(__dirname, "..", "Routes").slice(1)}\*.js`;
-const directoryPath = `${path.join(__dirname, "..", "Routes").slice(1)}/*.js`;
-const decodedpath = decodeURIComponent(directoryPath);
-// console.log(`SWAGGER_LINUX:PATH--->`,directoryPathLinux)
+const directoryPathLinux = `${path.join(__dirname, "..", "Routes")}/\*.js`;
+const decodedpath = decodeURIComponent(directoryPathLinux);
+// const directoryPath = `${path.join(__dirname, "..", "Routes").slice(1)}/*.js`;
+// const decodedpath = decodeURIComponent(directoryPath);
+console.log(`SWAGGER_LINUX:PATH--->`, directoryPathLinux);
 const options = {
     definition: {
         openapi: "3.0.3",
         info: {
-            title: "Web Pips",
+            title: "PB-DESIGNS",
             version: "1.7.1",
             description: "Web Pips",
             contact: {
